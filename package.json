@@ -1,0 +1,8 @@
+{
+  "name": "vscode-custom-commands",
+  "author": "Joe Nguyen <ntuandung93@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "execa": "^4.0.2"
+  }
+}

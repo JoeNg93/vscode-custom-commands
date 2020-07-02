@@ -1,0 +1,9 @@
+{
+  "ego.power-tools": {
+    "commands": {
+      "Import Relative Path": {
+        "script": "../src/import-relative-path.js"
+      }
+    }
+  }
+}
