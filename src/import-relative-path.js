@@ -15,7 +15,10 @@ async function listFilesInWorkspace(workspaceRootPath) {
   const cmd = await execa('fd', ['--type', 'f'], { cwd: workspaceRootPath });
   const files = cmd.stdout.split('\n');
 
-  return files.map((f) => ({ label: path.basename(f), description: f }));
+  return files.map((f) => ({
+    label: path.basename(f),
+    description: '/' + f,
+  }));
 }
 
 module.exports.execute = async (args) => {
@@ -28,16 +31,17 @@ module.exports.execute = async (args) => {
   }
 
   const rootPath = workspace.rootPath;
-  const selectedFilePath = await window.showQuickPick(
+  const selectedFile = await window.showQuickPick(
     listFilesInWorkspace(rootPath),
     {
       matchOnDescription: true,
     }
   );
 
-  if (!selectedFilePath) return;
+  if (!selectedFile) return;
 
   const currentOpenFilePath = window.activeTextEditor.document.fileName;
+  const selectedFilePath = selectedFile.description;
   let relPath = path.relative(
     path.dirname(currentOpenFilePath),
     path.join(rootPath, selectedFilePath)
