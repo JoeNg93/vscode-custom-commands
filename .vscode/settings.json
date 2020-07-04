@@ -3,6 +3,9 @@
     "commands": {
       "Import Relative Path": {
         "script": "../src/import-relative-path.js"
+      },
+      "Advanced New File": {
+        "script": "../src/advanced-new-file.js"
       }
     }
   }
