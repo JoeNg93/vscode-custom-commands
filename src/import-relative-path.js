@@ -13,12 +13,12 @@ async function hasFdInstalled() {
 
 async function listFilesInWorkspace(workspaceRootPath) {
   const cmd = await execa('fd', ['--type', 'f'], { cwd: workspaceRootPath });
-  const files = cmd.stdout.split('\n');
+  const files = cmd.stdout
+    .split('\n')
+    .map((f) => ({ label: path.basename(f), description: f }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
-  return files.map((f) => ({
-    label: path.basename(f),
-    description: '/' + f,
-  }));
+  return files;
 }
 
 module.exports.execute = async (args) => {
