@@ -14,7 +14,7 @@ async function hasFdInstalled() {
 
 async function listFoldersInWorkspace(workspaceRootPath) {
   const cmd = await execa('fd', ['--type', 'd'], { cwd: workspaceRootPath });
-  const folders = cmd.stdout.split('\n');
+  const folders = cmd.stdout.split('\n').sort();
 
   return ['/'].concat(folders.map((f) => '/' + f)); // Add root folder + leading slash to folder path
 }
