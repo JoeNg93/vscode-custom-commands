@@ -3,6 +3,7 @@
   "author": "Joe Nguyen <ntuandung93@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "execa": "^4.0.2"
+    "execa": "^4.0.2",
+    "uuid": "^8.3.2"
   }
 }
